@@ -14,8 +14,8 @@ public class ProduitMockServiceImpl implements IProduitService{
 	public ProduitMockServiceImpl(){
 		produits = new ArrayList<Produit>();
 		produits.add(new Produit("Livre", 50, 200));
-		produits.add(new Produit("stylo", 120, 30));
-		produits.add(new Produit("cahier", 70, 450));
+		produits.add(new Produit("stylo", 120, 30f));
+		produits.add(new Produit("cahier", 70, 450f));
 				
 		
 	}
@@ -32,8 +32,13 @@ public class ProduitMockServiceImpl implements IProduitService{
 
 	@Override
 	public void updateProduit(Produit produit) {
-		produits.remove(produit);
-		produits.add(produit);
+		for (Produit p : produits) {
+			if(p.getRef().equals(produit.getRef())) {
+				p.setPrixUnitaire(produit.getPrixUnitaire());
+				p.setQuantite(produit.getQuantite());
+			}
+		}
+		
 	}
 
 	@Override
