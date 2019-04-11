@@ -40,7 +40,7 @@ public class ProduitController {
     }
     
     @DeleteMapping
-    public void deleteProduit(@PathVariable String ref) {
-    	produitService.deleteProduit(ref);
+    public void deleteProduit(@PathVariable Long id) {
+    	produitService.deleteProduit(id);
     }
 }
